@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spring Web MVC - Mercury</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="yrucrew" /><meta name="description" content="1.1. DispatchServlet 1.1.5. Processing DispatcherServlet 的请求流程如下： WebApplicationContext locale resolver（本地化处理器） theme resolver multipart resolver 寻找一个适当的 handler。如果找到则把 handler（前置处理器，" /><meta name="keywords" content="Mercury, yrucrew, quan" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.85.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/my-first-post/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e8cc543b646bf03a52b7a1db51c8817207cc94eeee421dba2412557b7de96cbb.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Spring Web MVC" />
+<meta property="og:description" content="1.1. DispatchServlet 1.1.5. Processing DispatcherServlet 的请求流程如下： WebApplicationContext locale resolver（本地化处理器） theme resolver multipart resolver 寻找一个适当的 handler。如果找到则把 handler（前置处理器，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/my-first-post/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-26T10:45:56+08:00" />
+<meta property="article:modified_time" content="2021-06-26T10:45:56+08:00" />
+
+<meta itemprop="name" content="Spring Web MVC">
+<meta itemprop="description" content="1.1. DispatchServlet 1.1.5. Processing DispatcherServlet 的请求流程如下： WebApplicationContext locale resolver（本地化处理器） theme resolver multipart resolver 寻找一个适当的 handler。如果找到则把 handler（前置处理器，"><meta itemprop="datePublished" content="2021-06-26T10:45:56+08:00" />
+<meta itemprop="dateModified" content="2021-06-26T10:45:56+08:00" />
+<meta itemprop="wordCount" content="728">
+<meta itemprop="keywords" content="Spring MVC,Servlet,Spring," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Web MVC"/>
+<meta name="twitter:description" content="1.1. DispatchServlet 1.1.5. Processing DispatcherServlet 的请求流程如下： WebApplicationContext locale resolver（本地化处理器） theme resolver multipart resolver 寻找一个适当的 handler。如果找到则把 handler（前置处理器，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Mercury</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Mercury</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spring Web MVC</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-06-26 </span>
+        
+          <span class="more-meta"> 约 728 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-dispatchservlet">1.1. DispatchServlet</a>
+      <ul>
+        <li><a href="#115-processing">1.1.5. Processing</a></li>
+        <li><a href="#118-exceptions">1.1.8. Exceptions</a>
+          <ul>
+            <li><a href="#chain-of-resolvers">Chain of Resolvers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#12-filters">1.2. Filters</a>
+      <ul>
+        <li><a href="#121-form-data">1.2.1. Form Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-annotated-controllers">1.3. Annotated Controllers</a>
+      <ul>
+        <li><a href="#131-declaration">1.3.1. Declaration</a>
+          <ul>
+            <li><a href="#aop-proxies">AOP Proxies</a></li>
+          </ul>
+        </li>
+        <li><a href="#132-request-mapping">1.3.2. Request Mapping</a></li>
+        <li><a href="#133-uri-patterns">1.3.3 URI patterns</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="11-dispatchservlet">1.1. DispatchServlet</h1>
+<h2 id="115-processing">1.1.5. Processing</h2>
+<p>DispatcherServlet 的请求流程如下：</p>
+<ul>
+<li>WebApplicationContext</li>
+<li>locale resolver（本地化处理器）</li>
+<li>theme resolver</li>
+<li>multipart resolver</li>
+<li>寻找一个适当的 handler。如果找到则把 handler（前置处理器，后置处理器以及 controllers）关联到执行链，准备 model 进行渲染。另外，对于带注解的 controller，可以渲染 response （within the <code>HandlerAdapter</code>），而不是返回 view。</li>
+<li>如果返回 model，则渲染 view。如果没有返回 model（可能是由于预处理器或后处理器拦截了请求，也可能是出于安全原因），则不会渲染 view，因为请求可能已经完成了。</li>
+</ul>
+<h2 id="118-exceptions">1.1.8. Exceptions</h2>
+<p>通常情况下，错误响应如果在请求映射期间发生异常或从请求 handler（如 <code>@Controller</code> ）抛出异常，DispatcherServlet 将委托给 <code>HandlerExceptionResolver</code> beans 链来解析异常并提供替代方案。</p>
+<h3 id="chain-of-resolvers">Chain of Resolvers</h3>
+<p>可以在 Spring 配置中声明多个 <code>HandlerExceptionResolver</code> beans，按需要设置相应的 order。The higher the order property, the later the exception resolver is positioned.</p>
+<h1 id="12-filters">1.2. Filters</h1>
+<p><code>spring-web</code> 提供了一些有用的过滤器。</p>
+<h2 id="121-form-data">1.2.1. Form Data</h2>
+<h1 id="13-annotated-controllers">1.3. Annotated Controllers</h1>
+<p>Spring MVC 提供了基于注解的编程模型，<code>@Controller</code> 和<code>@RestController</code> 使用注解来表示请求映射，请求输入，异常处理等等。注解控制器拥有灵活的方法签名，不需要继承基础类或者实现特定的接口。</p>
+<h2 id="131-declaration">1.3.1. Declaration</h2>
+<p><code>@RestController</code> 是一个组合注解，继承了<code>@ResponseBody</code> ，因此会直接写响应体而不是视图或者渲染 HTML 模板。</p>
+<h3 id="aop-proxies">AOP Proxies</h3>
+<p>某些时候，需要再运行时使用 AOP 代理装饰 controller。例如直接在 Controller 上使用 @Transaction 注解，类似这种情况，官方推荐使用基于类的代理，这通常也是 controllers 的默认行为。但是，如果控制器必须实现一个不是 Spring Context 回调的接口（例如 <code>InitializingBean</code>、<code>*Aware</code>等），您可能需要显式地配置基于类的代理，使用 <code>@EnableTransactionManagement</code> 的话修改成 <code>@EnableTransactionManagement(proxyTargetClass = true)</code></p>
+<h2 id="132-request-mapping">1.3.2. Request Mapping</h2>
+<p><code>@RequestMapping</code> 有特定 HTTP 方法的缩写变体：</p>
+<ul>
+<li><code>@GetMapping</code></li>
+<li><code>@PostMapping</code></li>
+<li><code>@PutMapping</code></li>
+<li><code>@DeleteMapping</code></li>
+<li><code>@PatchMapping</code></li>
+</ul>
+<h2 id="133-uri-patterns">1.3.3 URI patterns</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">yrucrew</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-06-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring-mvc/">Spring MVC</a>
+          <a href="/tags/servlet/">Servlet</a>
+          <a href="/tags/spring/">Spring</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  
+</div>
+
+
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
